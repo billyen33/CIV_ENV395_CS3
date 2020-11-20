@@ -1,4 +1,4 @@
-
+import math
 '''
 Part II A
 '''
@@ -40,3 +40,31 @@ Pin = 0#P - Yps*(So-S2) #the steady state S is what we calculated in 2A, unit is
 #print(So-S2)
 omega = ((((umax2*S2)/((Ks2+S2)*Yxs))+m)*(P-Pin))/((So-S2)*(1-((P-Pin)/(Yps*(So-S2)))))
 print("omega= " + str(omega) + " mg CO2/(day*mg cells)")
+
+'''
+Part III B
+'''
+Co = 30 #mg/L
+k = 0.03 # 1/day
+Xmax = 12 #m
+porosity = 0.3
+De = 525 * 0.0001 #cm^2/day * 0.0001 m^2/cm^2
+alpha = (-Co)/(math.exp(2*math.sqrt(k/De)*Xmax)-1)
+beta = (Co)/(1-math.exp(-2*math.sqrt(k/De)*Xmax))
+x = []
+for ii in range(13):
+    x.append(ii)
+C = []
+for item in x:
+    C.append(alpha*math.exp(math.sqrt(k*porosity/De)*item)+beta*math.exp(-math.sqrt(k*porosity/De)*item))
+print(alpha)
+print(beta)
+
+#this generates the plot we need
+from matplotlib import pyplot as plt
+fig, ax = plt.subplots()
+ax.plot(x, C)
+ax.set_xlabel('Position x in Biofilm Reactor (m)')
+ax.set_ylabel('Concentration of Organic Matter (mg/L)')
+ax.set_title('Concentration of Organic Matter (mg/L) vs Position in Biofilm Reactor (m)')
+plt.show()
