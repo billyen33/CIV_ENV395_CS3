@@ -71,7 +71,7 @@ ax.set_title('Concentration of Organic Matter (mg/L) vs Position in Biofilm Reac
 '''
 Part III C
 '''
-x_no_sub = [0,1,2,3,4,5]
+x_no_sub = [0,1,2,3,4,5,5.1,5.2,5.3,5.4,5.5,5.51,5.552,5.553,5.554,5.555,5.565]
 x_sub = [5.566,6,7,8,9,10,11,12]
 P_no1 = []
 P_no2 =[]
