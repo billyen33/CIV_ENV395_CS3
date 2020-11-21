@@ -49,16 +49,16 @@ k = 0.03 # 1/day
 Xmax = 12 #m
 porosity = 0.3
 De = 525 * 0.0001 #cm^2/day * 0.0001 m^2/cm^2
-alpha = (-Co)/(math.exp(2*math.sqrt(k/De)*Xmax)-1)
-beta = (Co)/(1-math.exp(-2*math.sqrt(k/De)*Xmax))
+alpha = ((-Co)/(math.exp(2*math.sqrt(k/De)*Xmax)-1))
+beta = ((Co)/(1-math.exp(-2*math.sqrt(k/De)*Xmax)))
 x = []
+#generate the list for x from 0 to 12 here
 for ii in range(13):
     x.append(ii)
 C = []
+#generate the list for concentration at 13 points here
 for item in x:
     C.append(alpha*math.exp(math.sqrt(k*porosity/De)*item)+beta*math.exp(-math.sqrt(k*porosity/De)*item))
-print(alpha)
-print(beta)
 
 #this generates the plot we need
 from matplotlib import pyplot as plt
