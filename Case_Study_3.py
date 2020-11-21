@@ -49,8 +49,8 @@ k = 0.03 # 1/day
 Xmax = 12 #m
 porosity = 0.3
 De = 525 * 0.0001 #cm^2/day * 0.0001 m^2/cm^2
-alpha = ((-Co)/(math.exp(2*math.sqrt(k/De)*Xmax)-1))
-beta = ((Co)/(1-math.exp(-2*math.sqrt(k/De)*Xmax)))
+alpha = ((-Co)/(math.exp(2*math.sqrt(k*porosity/De)*Xmax)-1))
+beta = ((Co)/(1-math.exp(-2*math.sqrt(k*porosity/De)*Xmax)))
 x = []
 #generate the list for x from 0 to 12 here
 for ii in range(13):
@@ -67,4 +67,56 @@ ax.plot(x, C)
 ax.set_xlabel('Position x in Biofilm Reactor (m)')
 ax.set_ylabel('Concentration of Organic Matter (mg/L)')
 ax.set_title('Concentration of Organic Matter (mg/L) vs Position in Biofilm Reactor (m)')
+
+'''
+Part III C
+'''
+x_no_sub = [0,1,2,3,4,5]
+x_sub = [5.566,6,7,8,9,10,11,12]
+P_no1 = []
+P_no2 =[]
+P_no3 = []
+P_no4 = []
+P_no5 = []
+#generate list for lines without subsidy
+for item in x_no_sub:
+    P_no1.append(250*12*3*1 - (300*item**2+500*1))
+    P_no2.append(250*12*3*2 - (300*item**2+500*2))
+    P_no3.append(250*12*3*3 - (300*item**2+500*3))
+    P_no4.append(250*12*3*4 - (300*item**2+500*4))
+    P_no5.append(250*12*3*5 - (300*item**2+500*5))
+P_sub1 = []
+P_sub2 =[]
+P_sub3 = []
+P_sub4 = []
+P_sub5 = []
+for item in x_sub:
+    P_sub1.append((250*12*3+12*365)*1 - (300*item**2+500*1))
+    P_sub2.append((250*12*3+12*365)*2 - (300*item**2+500*2))
+    P_sub3.append((250*12*3+12*365)*3 - (300*item**2+500*3))
+    P_sub4.append((250*12*3+12*365)*4 - (300*item**2+500*4))
+    P_sub5.append((250*12*3+12*365)*5 - (300*item**2+500*5))
+P1 = P_no1 + P_sub1
+P2 = P_no2 + P_sub2
+P3 = P_no3 + P_sub3
+P4 = P_no4 + P_sub4
+P5 = P_no5 + P_sub5
+Xtotal = x_no_sub + x_sub
+zero = []
+for item in Xtotal:
+    zero.append(0)
+
+#this generates the plot we need
+fig2, ax2 = plt.subplots()
+ax2.plot(Xtotal, P1, label = 'Year 1')
+ax2.plot(Xtotal, P2, label = 'Year 2')
+ax2.plot(Xtotal, P3, label = 'Year 3')
+ax2.plot(Xtotal, P4, label = 'Year 4')
+ax2.plot(Xtotal, P5, label = 'Year 5')
+ax2.plot(Xtotal, zero, linestyle = 'dashed', color='red', label = 'Break Even Point')
+ax2.axvline(x = 5.566, ymin = -200000, ymax = 200000, linestyle = ':', color = 'gray', alpha = 0.8, label='Max Profit')
+ax2.set_xlabel('Total Length of Reactor (m)')
+ax2.set_ylabel('Profit ($)')
+ax2.set_title('Profit ($) vs. Total Length of Reactor (m) From Year 1-5')
+plt.legend()
 plt.show()
