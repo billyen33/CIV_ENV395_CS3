@@ -49,8 +49,10 @@ k = 0.03 # 1/day
 Xmax = 12 #m
 porosity = 0.3
 De = 525 * 0.0001 #cm^2/day * 0.0001 m^2/cm^2
-alpha = ((-Co)/(math.exp(2*math.sqrt(k*porosity/De)*Xmax)-1))
-beta = ((Co)/(1-math.exp(-2*math.sqrt(k*porosity/De)*Xmax)))
+alpha = (Co)/(1+math.exp(2*math.sqrt(k*porosity/De)*Xmax))
+beta = (Co)/(1+math.exp(-2*math.sqrt(k*porosity/De)*Xmax))
+print(alpha)
+print(beta)
 x = []
 #generate the list for x from 0 to 12 here
 for ii in range(13):
@@ -85,6 +87,7 @@ for item in x_no_sub:
     P_no3.append(250*12*3*3 - (300*item**2+500*3))
     P_no4.append(250*12*3*4 - (300*item**2+500*4))
     P_no5.append(250*12*3*5 - (300*item**2+500*5))
+print('P(3.36) = ' + str(250*12*3*1 - (300*3.36**2+500*1)))
 P_sub1 = []
 P_sub2 =[]
 P_sub3 = []
@@ -96,6 +99,7 @@ for item in x_sub:
     P_sub3.append((250*12*3+12*365)*3 - (300*item**2+500*3))
     P_sub4.append((250*12*3+12*365)*4 - (300*item**2+500*4))
     P_sub5.append((250*12*3+12*365)*5 - (300*item**2+500*5))
+print('P(5.566) = ' + str((250*12*3+12*365)*1 - (300*5.566**2+500*1)))
 P1 = P_no1 + P_sub1
 P2 = P_no2 + P_sub2
 P3 = P_no3 + P_sub3
