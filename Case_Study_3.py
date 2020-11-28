@@ -73,8 +73,8 @@ ax.set_title('Concentration of Organic Matter (mg/L) vs Position in Biofilm Reac
 '''
 Part III C
 '''
-x_no_sub = [0,1,2,3,4,5,5.1,5.2,5.3,5.4,5.5,5.51,5.552,5.553,5.554,5.555,5.565]
-x_sub = [5.566,6,7,8,9,10,11,12]
+x_no_sub = [0,1,2,3,4,5,5.1,5.2,5.3,5.4,5.5,5.51,5.552,5.553,5.554,5.555,5.565,5.57291]
+x_sub = [5.57292,6,7,8,9,10,11,12]
 P_no1 = []
 P_no2 =[]
 P_no3 = []
@@ -87,7 +87,7 @@ for item in x_no_sub:
     P_no3.append(250*12*3*3 - (300*item**2+500*3))
     P_no4.append(250*12*3*4 - (300*item**2+500*4))
     P_no5.append(250*12*3*5 - (300*item**2+500*5))
-print('P(3.36) = ' + str(250*12*3*1 - (300*3.36**2+500*1)))
+print('P(3.34997) = ' + str(250*12*3*1 - (300*3.34997**2+500*1)))
 P_sub1 = []
 P_sub2 =[]
 P_sub3 = []
@@ -99,7 +99,7 @@ for item in x_sub:
     P_sub3.append((250*12*3+12*365)*3 - (300*item**2+500*3))
     P_sub4.append((250*12*3+12*365)*4 - (300*item**2+500*4))
     P_sub5.append((250*12*3+12*365)*5 - (300*item**2+500*5))
-print('P(5.566) = ' + str((250*12*3+12*365)*1 - (300*5.566**2+500*1)))
+print('P(5.57292) = ' + str((250*12*3+12*365)*1 - (300*5.57292**2+500*1)))
 P1 = P_no1 + P_sub1
 P2 = P_no2 + P_sub2
 P3 = P_no3 + P_sub3
@@ -118,8 +118,8 @@ ax2.plot(Xtotal, P3, label = 'Year 3')
 ax2.plot(Xtotal, P4, label = 'Year 4')
 ax2.plot(Xtotal, P5, label = 'Year 5')
 ax2.plot(Xtotal, zero, linestyle = 'dashed', color='red', label = 'Break Even Point')
-ax2.axvline(x = 5.566, ymin = -200000, ymax = 200000, linestyle = ':', color = 'gray', alpha = 0.8, label='Max Profit')
-ax2.axvline(x = 3.363, ymin = -200000, ymax = 200000, linestyle = '-.', color = 'gray', alpha = 0.8, label='Min Length')
+ax2.axvline(x = 5.57292, ymin = -200000, ymax = 200000, linestyle = ':', color = 'gray', alpha = 0.8, label='Max Profit')
+ax2.axvline(x = 3.34997, ymin = -200000, ymax = 200000, linestyle = '-.', color = 'gray', alpha = 0.8, label='Min Length')
 ax2.set_xlabel('Total Length of Reactor (m)')
 ax2.set_ylabel('Profit ($)')
 ax2.set_title('Profit ($) vs. Total Length of Reactor (m) From Year 1-5')
